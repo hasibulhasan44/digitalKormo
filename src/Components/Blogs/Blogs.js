@@ -86,7 +86,7 @@ const Blogs = () => {
         <div className="collapse-title text-xl font-medium">
           4.What is Node? How does it work?
         </div>
-        <div className="collapse-content">
+        <div className="collapse-content text-white">
           <p>
             Node.js is an open source server environment. Node.js is free.
             Node.js runs on various platforms (Windows, Linux, Unix, Mac OS X,

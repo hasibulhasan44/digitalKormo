@@ -35,20 +35,17 @@ const Navbar = () => {
                 <Link to="/blogs" className="justify-between">Blogs</Link>
               </li>
               <li>
-                <Link>FAQs</Link>
+                <Link to="/faqs">FAQs</Link>
               </li>
               <li>
-                <Link>About</Link>
-              </li>
-              <li>
-                <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">Responsive</button>
+                <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-md">Dark Mode</button>
               </li>
             </ul>
           </div>
-          <div className="flex">
+          <Link to="/" className="flex">
             <img className="w-10 mr-2" src={logo} alt="" />
             <h1 className="text-3xl text-white">Digital Kormo</h1>
-          </div>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
@@ -59,7 +56,7 @@ const Navbar = () => {
               <Link to="/blogs" className="text-white">Blogs</Link>
             </li>
             <li>
-              <Link className="text-white">FAQs</Link>
+              <Link to="/faqs" className="text-white">FAQs</Link>
             </li>
             <li>
                 <button className="btn-xs sm:btn-sm md:btn-md lg:btn-md text-white">Dark Mode</button>
