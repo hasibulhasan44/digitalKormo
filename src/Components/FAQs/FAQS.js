@@ -53,14 +53,11 @@ const FAQS = () => {
         className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
       >
         <div className="collapse-title text-xl font-medium">
-          4. What will a person learn after enrolling in the courses?
+          4. What if I get stuck at any point of these courses?
         </div>
         <div className="collapse-content text-white">
           <p>
-            It depends on that particular person. If anyone enrolls the{" "}
-            <strong>Digital Marketing</strong> Course, he will learn the basics
-            to advance of this field. Besides, it depends on the passion,
-            hardwork and dedication of the student.
+            We have a dedicated team to help you. If you face any problem, you can simply ask our team to help you. Our support team is available 24/7. We can assure you that you will not get this kind of support from any other platform.
           </p>
         </div>
       </div>
