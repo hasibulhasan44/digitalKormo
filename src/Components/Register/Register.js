@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext);
+    const {createUser, myStyle} = useContext(AuthContext);
 
     const handleSubmit = event =>{
         event.preventDefault();
@@ -23,7 +23,8 @@ const Register = () => {
     }
 
   return (
-    <div className="lg:w-1/4 lg:mt-12 mt-8 mx-auto  bg-success-content p-8 rounded-xl">
+    <div style={myStyle} className='h-screen'>
+        <div className="lg:w-1/4 mx-auto p-8 rounded-xl" style={myStyle}>
         <h2 className="text-xl mb-4 text-center text-white">Register Your Account</h2>
         <form onSubmit={handleSubmit}>
             <div className="flex flex-col">
@@ -35,6 +36,7 @@ const Register = () => {
             </div>
                 <button className="w-full mt-4 btn btn-outline btn-error btn-xs sm:btn-sm md:btn-md lg:btn-md">Register</button>
         </form>
+    </div>
     </div>
   );
 };

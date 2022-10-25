@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
+    const {myStyle} = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -39,16 +40,16 @@ const Login = () => {
     }
 
   return (
-    <div>
-      <div className="hero min-h-screen bg-base-200">
+    <div style={myStyle}>
+      <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
 
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <div className="card-body">
+            <div className="card-body" style={myStyle}>
               <form onSubmit={handleSubmit}>
                 <div className="form-control">
                     <label className="label">
-                    <span className="label-text">Email</span>
+                    <span className="label-text" style={myStyle}>Email</span>
                     </label>
                     <input
                     type="text"
@@ -59,7 +60,7 @@ const Login = () => {
                 </div>
                 <div className="form-control">
                     <label className="label">
-                    <span className="label-text">Password</span>
+                    <span className="label-text" style={myStyle}>Password</span>
                     </label>
                     <input
                     type="password"
@@ -69,7 +70,7 @@ const Login = () => {
                     />
                     <div className="flex justify-between">
                         <label className="label">
-                        <Link href="#" className="label-text-alt link link-hover text-md">
+                        <Link href="#" className="label-text-alt link link-hover text-md" style={myStyle}>
                             Forgot password?
                         </Link>
                         </label>
@@ -77,13 +78,13 @@ const Login = () => {
                     </div>
                 </div>
                 <div className="form-control mt-4">
-                    <button className="btn btn-primary">Login</button>
+                    <button className="btn btn-primary" style={myStyle}>Login</button>
                 </div>
               </form>
                 <hr className="mt-2"/>
                 <div>
-                    <Link className="btn btn-outline w-full mt-4" onClick={handleGithubSignIn}>Login With Github</Link>
-                    <Link className="btn btn-outline w-full mt-4" onClick={handleGoogleSignIn}>Login With Google</Link>
+                    <Link className="btn btn-outline w-full mt-4" onClick={handleGithubSignIn} style={myStyle}>Login With Github</Link>
+                    <Link className="btn btn-outline w-full mt-4" onClick={handleGoogleSignIn} style={myStyle}>Login With Google</Link>
                 </div>
             </div>
           </div>

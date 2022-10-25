@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import logo from "../../images/logo.png";
 
 const Navbar = () => {
-  const {user, logOut, toggleMode} = useContext(AuthContext);
+  const {user, logOut, toggleMode, myStyle} = useContext(AuthContext);
 
   const handleSignOut = () =>{
     logOut()
@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100" style={myStyle}>
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -39,6 +39,7 @@ const Navbar = () => {
             <ul
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              style={myStyle}
             >
               <li>
                 <Link to="/courses">Courses</Link>
@@ -56,19 +57,19 @@ const Navbar = () => {
           </div>
           <Link to="/" className="flex">
             <img className="w-10 mr-2" src={logo} alt="" />
-            <h1 className="text-3xl text-black">Digital Kormo</h1>
+            <h1 className="text-3xl" style={myStyle}>Digital Kormo</h1>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal p-0">
+          <ul className="menu menu-horizontal p-0" style={myStyle}>
             <li>
-              <Link to="/courses" className="text-black">Courses</Link>
+              <Link to="/courses">Courses</Link>
             </li>
             <li tabIndex={0}>
-              <Link to="/blogs" className="text-black">Blogs</Link>
+              <Link to="/blogs">Blogs</Link>
             </li>
             <li>
-              <Link to="/faqs" className="text-black">FAQs</Link>
+              <Link to="/faqs">FAQs</Link>
             </li>
             <li>
             <label className="swap swap-rotate">
