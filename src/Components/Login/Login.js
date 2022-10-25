@@ -1,7 +1,43 @@
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React from "react";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
+
+    const navigate = useNavigate();
+
+    const {signIn, googleSignIn, githubSignIn} = useContext(AuthContext);
+
+    const googleProvider =new GoogleAuthProvider();
+
+    const githubProvider = new GithubAuthProvider();
+
+    const handleSubmit =event=>{
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+        signIn(email, password)
+        .then(result => {
+            const user = result.user;
+            navigate('/')
+        })
+        .catch(error => {
+            console.error(error);
+        })
+    }
+
+    const handleGoogleSignIn = () =>{
+        googleSignIn(googleProvider);
+    }
+
+    const handleGithubSignIn = () =>{
+        githubSignIn(githubProvider);
+    }
+
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -9,42 +45,46 @@ const Login = () => {
 
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="email"
-                  className="input input-bordered"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="password"
-                  className="input input-bordered"
-                />
-                <div className="flex justify-between">
+              <form onSubmit={handleSubmit}>
+                <div className="form-control">
                     <label className="label">
-                    <Link href="#" className="label-text-alt link link-hover text-md">
-                        Forgot password?
-                    </Link>
+                    <span className="label-text">Email</span>
                     </label>
-                    <Link to="/register" className="btn btn-outline btn-info mt-4">Register</Link>
+                    <input
+                    type="text"
+                    placeholder="email"
+                    className="input input-bordered"
+                    name="email"
+                    />
                 </div>
-              </div>
-              <div className="form-control mt-4">
-                <Link className="btn btn-primary">Login</Link>
-              </div>
-              <hr className="mt-2"/>
-              <div>
-                <Link className="btn btn-outline w-full mt-4">Login With Github</Link>
-                <Link className="btn btn-outline w-full mt-4">Login With Google</Link>
-              </div>
+                <div className="form-control">
+                    <label className="label">
+                    <span className="label-text">Password</span>
+                    </label>
+                    <input
+                    type="password"
+                    placeholder="password"
+                    className="input input-bordered"
+                    name="password"
+                    />
+                    <div className="flex justify-between">
+                        <label className="label">
+                        <Link href="#" className="label-text-alt link link-hover text-md">
+                            Forgot password?
+                        </Link>
+                        </label>
+                        <Link to="/register" className="btn btn-outline btn-info mt-4">Register</Link>
+                    </div>
+                </div>
+                <div className="form-control mt-4">
+                    <button className="btn btn-primary">Login</button>
+                </div>
+              </form>
+                <hr className="mt-2"/>
+                <div>
+                    <Link className="btn btn-outline w-full mt-4" onClick={handleGithubSignIn}>Login With Github</Link>
+                    <Link className="btn btn-outline w-full mt-4" onClick={handleGoogleSignIn}>Login With Google</Link>
+                </div>
             </div>
           </div>
         </div>
