@@ -10,7 +10,7 @@ const Blogs = () => {
         <div className="collapse-title text-xl font-medium">
           1.What is CORS?
         </div>
-        <div className="collapse-content text-white">
+        <div className="collapse-content text-black">
           <p>
             Cross-origin resource sharing (CORS) is a mechanism that allows
             restricted resources on a web page to be requested from another
@@ -38,7 +38,7 @@ const Blogs = () => {
         <div className="collapse-title text-xl font-medium">
           2.How does Firebase works? What are the alternatives of Firebase?
         </div>
-        <div className="collapse-content text-white">
+        <div className="collapse-content text-black">
           <p>
             The Firebase Realtime Database lets you build rich, collaborative
             applications by allowing secure access to the database directly from
@@ -64,7 +64,7 @@ const Blogs = () => {
         <div className="collapse-title text-xl font-medium">
           3.How does Private Route work?
         </div>
-        <div className="collapse-content text-white">
+        <div className="collapse-content text-black">
           <p>
             Private Routes in React Router (also called Protected Routes)
             require a user being authorized to visit a route (read: page). So if
@@ -86,7 +86,7 @@ const Blogs = () => {
         <div className="collapse-title text-xl font-medium">
           4.What is Node? How does it work?
         </div>
-        <div className="collapse-content text-white">
+        <div className="collapse-content text-black">
           <p>
             Node.js is an open source server environment. Node.js is free.
             Node.js runs on various platforms (Windows, Linux, Unix, Mac OS X,

@@ -44,19 +44,19 @@ const Navbar = () => {
           </div>
           <Link to="/" className="flex">
             <img className="w-10 mr-2" src={logo} alt="" />
-            <h1 className="text-3xl text-white">Digital Kormo</h1>
+            <h1 className="text-3xl text-black">Digital Kormo</h1>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <li>
-              <Link to="/courses" className="text-white">Courses</Link>
+              <Link to="/courses" className="text-black">Courses</Link>
             </li>
             <li tabIndex={0}>
-              <Link to="/blogs" className="text-white">Blogs</Link>
+              <Link to="/blogs" className="text-black">Blogs</Link>
             </li>
             <li>
-              <Link to="/faqs" className="text-white">FAQs</Link>
+              <Link to="/faqs" className="text-black">FAQs</Link>
             </li>
             <li>
             <label className="swap swap-rotate">
