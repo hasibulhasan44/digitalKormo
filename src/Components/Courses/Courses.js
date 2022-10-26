@@ -19,7 +19,7 @@ const Courses = () => {
 
   return (
     <div id="courses-main-container" className="flex">
-        <div style={myStyle} className='min-h-screen lg:grid lg:grid-cols-3 grid grid-cols-1 mx-auto'>
+        <div style={myStyle} className='lg:h-screen min-h-screen lg:grid lg:grid-cols-2 grid grid-cols-1 mx-auto'>
             {
                 courses.map(course => <p key={course.id}>
                     <SingleCourse

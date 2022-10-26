@@ -5,6 +5,7 @@ import Courses from "../Components/Courses/Courses";
 import FAQS from "../Components/FAQs/FAQS";
 import Home from "../Components/Home/Home";
 import Login from "../Components/Login/Login";
+import NotFound from "../Components/NotFound/NotFound";
 import Register from "../Components/Register/Register";
 import SingleCourse from '../Components/singleCourse/SingleCourse';
 import Main from "../Layout/Main";
@@ -48,6 +49,10 @@ const routes = createBrowserRouter([
             {
                 path:'/register',
                 element:<Register></Register>
+            },
+            {
+                path: '*',
+                element: <NotFound></NotFound>
             }
         ]
     }
