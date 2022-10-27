@@ -8,6 +8,8 @@
 
 4. There is a theme toggler button. Clicking this button switches between dark and light mode.
 
+5. Overall, my site is dynamic. You can redirect anywhere without reloading the site. Actually this is SPA(Single page application).
+
 
 
 
