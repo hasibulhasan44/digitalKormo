@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Register = () => {
     const {createUser, myStyle, updateUserProfile} = useContext(AuthContext);
     const navigate = useNavigate();
+    const [error, setError] = useState();
 
     const handleSubmit = event =>{
         event.preventDefault();
@@ -14,18 +16,26 @@ const Register = () => {
         const photourl = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(photourl, name)
-        createUser(email, password)
-        .then(result => {
-            const user = result.user;
-            console.log(user)
-            form.reset();
-            alert('done');
-            handleProfileUpdate(name, photourl)
-        })
-        .catch(error => {
-            console.error(error);
-        })
+        const confirm = form.confirm.value;
+        if(password !== confirm){
+            toast("pass didn't match")
+            return;
+        }
+        else{
+            createUser(email, password)
+                .then(result => {
+                const user = result.user;
+                
+                form.reset();
+                navigate('/');
+                setError('');
+                handleProfileUpdate(name, photourl)
+            })
+            .catch(error => {
+                console.error(error);
+                toast(error.message);
+            })
+        }
     }
 
     const handleProfileUpdate = (name, photourl)=> {
@@ -44,15 +54,16 @@ const Register = () => {
         <h2 className="text-xl mb-4 text-center">Register Your Account</h2>
         <form onSubmit={handleSubmit}>
             <div className="flex flex-col">
-                <input className="text-center mb-4 p-2 rounded-lg" type="text" placeholder="Full Name" name="fullName"/>
-                <input className="text-center mb-4 p-2 rounded-lg" type="text" placeholder="Photo URL" name="photo"/>
-                <input className="text-center mb-4 p-2 rounded-lg" type="email" placeholder="Email" name="email"/>
-                <input className="text-center mb-4 p-2 rounded-lg" type="password" placeholder="Password" name="password"/>
-                <input className="text-center mb-4 p-2 rounded-lg" type="password" placeholder="Confirm Password" name="confirm"/>
+                <input className="text-center mb-4 p-2 rounded-lg" type="text" placeholder="Full Name" name="fullName" required/>
+                <input className="text-center mb-4 p-2 rounded-lg" type="text" placeholder="Photo URL" name="photo" required/>
+                <input className="text-center mb-4 p-2 rounded-lg" type="email" placeholder="Email" name="email" required/>
+                <input className="text-center mb-4 p-2 rounded-lg" type="password" placeholder="Password" name="password" required/>
+                <input className="text-center mb-4 p-2 rounded-lg" type="password" placeholder="Confirm Password" name="confirm" required/>
                 <hr />
             </div>
                 <button className="w-full mt-4 btn btn-outline btn-error btn-xs sm:btn-sm md:btn-md lg:btn-md">Register</button>
         </form>
+        <p className="text-red-500 m-3">{error}</p>
         </div>
     </div>
   );

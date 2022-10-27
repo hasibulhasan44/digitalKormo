@@ -55,7 +55,7 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth, githubProvider);
     }
 
-    const updateUserProfile =({profile})=>{
+    const updateUserProfile =(profile)=>{
         return updateProfile (auth.currentUser, profile)
     }
 
@@ -79,6 +79,7 @@ const AuthProvider = ({children}) => {
             <AuthContext.Provider value={authInfo}>
                 {children}
             </AuthContext.Provider>
+            
         </div>
     );
 };

@@ -1,15 +1,17 @@
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
     const location = useLocation();
 
+    const [error, setError] = useState(null)
     const from = location?.state?.from?.pathname || '/';
 
-    const {myStyle} = useContext(AuthContext);
+    const {myStyle, user} = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -19,6 +21,7 @@ const Login = () => {
 
     const githubProvider = new GithubAuthProvider();
 
+    
     const handleSubmit =event=>{
         event.preventDefault();
         const form = event.target;
@@ -27,11 +30,12 @@ const Login = () => {
         signIn(email, password)
         .then(result => {
             const user = result.user;
-            console.log(user)
+            toast('Logged In Successfully.');
             navigate(from, {replace:true})
         })
         .catch(error => {
             console.error(error);
+            toast(error.message)
         })
     }
 
@@ -90,6 +94,7 @@ const Login = () => {
                     <Link className="btn btn-outline w-full mt-4" onClick={handleGithubSignIn} style={myStyle}>Login With Github</Link>
                     <Link className="btn btn-outline w-full mt-4" onClick={handleGoogleSignIn} style={myStyle}>Login With Google</Link>
                 </div>
+                <p>{error}</p>
             </div>
           </div>
         </div>

@@ -3,7 +3,6 @@ import { StarIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 
 const singleCourse = (props) => {
-  console.log(props.course);
   const { name, img, rating, id } = props.course;
   return (
     <div>

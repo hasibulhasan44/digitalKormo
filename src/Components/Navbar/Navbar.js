@@ -3,9 +3,10 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import logo from "../../images/logo.png";
-
+import { UserCircleIcon } from "@heroicons/react/24/solid";
 const Navbar = () => {
   const {user, logOut, toggleMode, myStyle} = useContext(AuthContext);
+  console.log(user);
 
   const handleSignOut = () =>{
     logOut()
@@ -91,13 +92,22 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          {user?.uid?
-            <>
-            <img src={user?.PhotoURL} alt=""></img>
-            <Link className="btn text-white ml-4" onClick={handleSignOut}>Log Out</Link>
-            </>
+          {user?.uid && user?.photoURL?
+            <div>
+                <div className="tooltip tooltip-left tooltip-secondary" data-tip={user.displayName}> 
+                {user?.email?
+                  <img className="w-12 rounded-full mt-" src={user.photoURL} alt=""></img>
+                  :
+                  <UserCircleIcon></UserCircleIcon>
+                }
+                </div>
+                <Link className="btn text-white ml-4" onClick={handleSignOut}>Log Out</Link>
+            </div>
             :
-            <Link to="/login" className="btn text-white">Login</Link>
+            <div className="flex">
+              <UserCircleIcon className="w-10 mr-4"></UserCircleIcon>
+              <Link to="/login" className="btn text-white">Login</Link>
+            </div>
           }
         </div>
       </div>

@@ -8,7 +8,6 @@ import "./CourseDetails.css";
 const CourseDetails = () => {
   const singleCourseApi = useLoaderData();
   const { img, name, rating, price, details, id } = singleCourseApi;
-  console.log(singleCourseApi);
   const { myStyle } = useContext(AuthContext);
   return (
     <div>
