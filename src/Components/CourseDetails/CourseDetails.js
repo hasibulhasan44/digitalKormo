@@ -1,5 +1,5 @@
 import React from "react";
-import { StarIcon, ArrowDownTrayIcon } from "@heroicons/react/24/solid";
+import { StarIcon } from "@heroicons/react/24/solid";
 import { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
@@ -15,9 +15,9 @@ const CourseDetails = () => {
             <div className="w-3/4 bg-gray-400 p-4 rounded-lg">
                 <h1>Hello beloved Lerners. This is a course where you can learn {name} very efficiently and in a easy way. If you need any further query, you can easily press on the download button and download a PDF.</h1>
             </div>
-            <div className="items-center">
-                <ArrowDownTrayIcon className="h-12 w-12 mr-8 mx-auto text-red-600"></ArrowDownTrayIcon>
-            </div>
+            <Link to={`/pdf/${id}`}className="items-center">
+                <button className="border-4 bg-gray-700 p-2 rounded-lg text-white">Go to Download page</button>
+            </Link>
         </div>
 
 
