@@ -20,3 +20,9 @@
 4. React-Hot-Toast, 
 5. TailwindCss,
 6. DaisyUI etc.
+
+
+
+
+
+## Live link of my site is: https://digital-kormo.web.app

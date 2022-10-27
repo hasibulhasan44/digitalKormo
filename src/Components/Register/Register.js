@@ -55,7 +55,7 @@ const Register = () => {
         <form onSubmit={handleSubmit}>
             <div className="flex flex-col">
                 <input className="text-center mb-4 p-2 rounded-lg" type="text" placeholder="Full Name" name="fullName" required/>
-                <input className="text-center mb-4 p-2 rounded-lg" type="text" placeholder="Photo URL" name="photo" required/>
+                <input className="text-center mb-4 p-2 rounded-lg" type="text" placeholder="Photo URL" name="photo"/>
                 <input className="text-center mb-4 p-2 rounded-lg" type="email" placeholder="Email" name="email" required/>
                 <input className="text-center mb-4 p-2 rounded-lg" type="password" placeholder="Password" name="password" required/>
                 <input className="text-center mb-4 p-2 rounded-lg" type="password" placeholder="Confirm Password" name="confirm" required/>

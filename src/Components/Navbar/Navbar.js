@@ -92,7 +92,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          {user?.uid && user?.photoURL?
+          {user?.uid || user?.photoURL?
             <div>
                 <div className="tooltip tooltip-left tooltip-secondary" data-tip={user.displayName}> 
                 {user?.email?
