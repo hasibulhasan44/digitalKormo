@@ -7,7 +7,7 @@ import "./CourseDetails.css";
 
 const CourseDetails = () => {
   const singleCourseApi = useLoaderData();
-  const { img, name, rating, price, details } = singleCourseApi;
+  const { img, name, rating, price, details, id } = singleCourseApi;
   console.log(singleCourseApi);
   const { myStyle } = useContext(AuthContext);
   return (
@@ -42,6 +42,7 @@ const CourseDetails = () => {
             <p>Details: {details.description}</p>
             <p className="mt-4">Advantages: {details.advantages}</p>
           </div>
+          <Link to={`/premiumAccess/${id}`} className="btn">Get Premium Access</Link>
         </div>
 
         <div style={myStyle} className="border-2 border-gray-600 rounded-lg">

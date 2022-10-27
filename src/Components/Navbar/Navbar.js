@@ -93,7 +93,7 @@ const Navbar = () => {
         <div className="navbar-end">
           {user?.uid?
             <>
-            <span>{user?.email}</span>
+            <img src={user?.PhotoURL} alt=""></img>
             <Link className="btn text-white ml-4" onClick={handleSignOut}>Log Out</Link>
             </>
             :

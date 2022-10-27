@@ -4,12 +4,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC_5bCoNf5IAm6pGlLsNjp7J54M8a8Hrfg",
-  authDomain: "digital-kormo.firebaseapp.com",
-  projectId: "digital-kormo",
-  storageBucket: "digital-kormo.appspot.com",
-  messagingSenderId: "851291495393",
-  appId: "1:851291495393:web:7d4f073d66c242a3f7d0a0"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId
 };
 
 // Initialize Firebase

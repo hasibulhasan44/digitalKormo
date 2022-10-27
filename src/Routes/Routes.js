@@ -6,9 +6,11 @@ import FAQS from "../Components/FAQs/FAQS";
 import Home from "../Components/Home/Home";
 import Login from "../Components/Login/Login";
 import NotFound from "../Components/NotFound/NotFound";
+import PremiumAccess from "../Components/PremiumAccess/PremiumAccess";
 import Register from "../Components/Register/Register";
 import SingleCourse from '../Components/singleCourse/SingleCourse';
 import Main from "../Layout/Main";
+import PrivateRoutes from "./PrivateRoutes";
 
 const routes = createBrowserRouter([
     {
@@ -49,6 +51,13 @@ const routes = createBrowserRouter([
             {
                 path:'/register',
                 element:<Register></Register>
+            },
+            {
+                path:'/premiumAccess/:id',
+                loader: async({params}) => {
+                    return fetch(`http://localhost:5000/courses/${params.id}`)
+                },
+                element:<PrivateRoutes><PremiumAccess></PremiumAccess></PrivateRoutes>
             },
             {
                 path: '*',

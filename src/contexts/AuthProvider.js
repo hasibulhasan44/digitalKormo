@@ -1,6 +1,6 @@
 import React from 'react';
 import { createContext } from 'react';
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut} from 'firebase/auth';
+import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from 'firebase/auth';
 import app from '../firebase/firebase.init';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -31,22 +31,32 @@ const AuthProvider = ({children}) => {
 
     const[user, setUser] = useState(null);
 
+    const [loading, setLoading] =useState(true);
+
     const auth = getAuth(app);
 
     const createUser = (email, password) =>{
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const signIn = (email, password) =>{
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     const googleSignIn = (googleProvider) =>{
+        setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
 
     const githubSignIn = (githubProvider)=>{
+        setLoading(true);
         return signInWithPopup(auth, githubProvider);
+    }
+
+    const updateUserProfile =({profile})=>{
+        return updateProfile (auth.currentUser, profile)
     }
 
     const logOut = () =>{
@@ -56,13 +66,14 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
         const unSubscribe = onAuthStateChanged(auth, (currentUser)=>{
             setUser(currentUser);
+            setLoading(false);
         })
         return()=>{
             unSubscribe();
         }
     },[])
 
-    const authInfo = {auth, createUser, signIn, user, googleSignIn, githubSignIn, logOut, myStyle, toggleMode}
+    const authInfo = {auth, createUser, signIn, user, googleSignIn, githubSignIn, logOut, myStyle, toggleMode, updateUserProfile, loading}
     return (
         <div>
             <AuthContext.Provider value={authInfo}>
